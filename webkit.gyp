@@ -57,7 +57,7 @@
 		],
 		'defines+':['<@(feature_defines)','CAIRO_HAS_FT_FONT','CAIRO_HAS_FC_FONT','CAIRO_HAS_EGL_FUNCTIONS'],
 		'include_dirs':['<@(webcore_includes)','<(DEPTH)/src/',],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 		'ldflags+':[''],
 		'jsflags+':[''],
 	},
@@ -108,7 +108,7 @@
 		],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)','<(DEPTH)/src/',],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_xml',
@@ -116,7 +116,7 @@
 		'sources':['<@(webcore_xml_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_wtf',
@@ -124,7 +124,7 @@
 		'sources':['<@(webcore_wtf_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_svg',
@@ -132,7 +132,7 @@
 		'sources':['<@(webcore_svg_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_loader',
@@ -140,7 +140,7 @@
 		'sources':['<@(webcore_loader_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_html',
@@ -148,7 +148,7 @@
 		'sources':['<@(webcore_html_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_dom',
@@ -156,7 +156,7 @@
 		'sources':['<@(webcore_dom_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_css',
@@ -164,7 +164,7 @@
 		'sources':['<@(webcore_css_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_rendering',
@@ -172,7 +172,7 @@
 		'sources':['<@(webcore_rendering_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_page',
@@ -180,7 +180,7 @@
 		'sources':['<@(webcore_page_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_style',
@@ -188,7 +188,7 @@
 		'sources':['<@(webcore_style_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_derived',
@@ -196,7 +196,7 @@
 		'sources':['<@(webcore_derived_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_platform',
@@ -204,7 +204,7 @@
 		'sources':['<@(webcore_platform_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'], #,'<(DEPTH)/deps/skia/include/core/','<(DEPTH)/deps/skia/include/config/'
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_history',
@@ -212,7 +212,7 @@
 		'sources':['<@(webcore_history_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name':'webcore_editing',
@@ -220,7 +220,7 @@
 		'sources':['<@(webcore_editing_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name': 'webcore_storage',
@@ -228,7 +228,7 @@
 		'sources': ['<@(webcore_storage_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name': 'webcore_angle',
@@ -236,7 +236,7 @@
 		'sources': ['<@(webcore_angle_files)',],
 		'sources/':[ ['exclude','<(webcore_excludes)'] ],
 		'include_dirs':['<@(webcore_includes)'],
-		'cflags+':['-Werror -include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
+		'cflags+':['-include ../deps/WebKit/Source/WebCore/WebCorePrefix.h'],
 	},
 	{
 		'target_name': 'xml',
@@ -245,7 +245,7 @@
 			'<(DEPTH)/deps/zlib', '<(DEPTH)/deps/libxml2/include', '<(DEPTH)/deps/libxml2/config',
 		],
 		'sources/':[['exclude','(test|rngparser|trio|runxmlconf|runtest|runsuite|python/|macos/|win32config|nano|elfgccheck|tutorial|win32/|example|doc/|xmlcatalog\\.c$|testlimits\\.c$|gjobread\\.c$|macos_main\\.c$|xmllint\\.c$)'],],
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 	{
 		'target_name':'jpeg_turbo',
@@ -257,14 +257,14 @@
 			'<(DEPTH)/deps/libjpeg_turbo',
 			'<(DEPTH)/deps/libjpeg_turbo/config',
 		],
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 	{
 		'target_name':'png',
 		'sources':['<@(libpng)',],
 		'include_dirs':['<(DEPTH)/deps/libpng', '<(DEPTH)/deps/zlib/' ],
 		'cxx':'<(emscripten_cc)',
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 	{
 		'target_name': 'freetype',
@@ -280,7 +280,7 @@
 			'<(DEPTH)/deps/freetype/include/freetype/config',
 			'<(DEPTH)/deps/zlib'
 		],
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 	{
 		'target_name':'libpixman',
@@ -292,7 +292,7 @@
 			'<(DEPTH)/deps/pixman/pixman',
 		],
 		'cxx':'<(emscripten_cc)',
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 	{
 		'target_name':'harfbuzz',
@@ -306,7 +306,7 @@
 			'<(DEPTH)/deps/freetype/include/freetype/config/',
 		],
 		'cxx':'<(emscripten_cc)',
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 	{
 		'target_name': 'cairo',
@@ -328,7 +328,7 @@
 			'<(DEPTH)/src/WebCoreSupport/',
 		],
 		'cxx':'<(emscripten_cc)',
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 	{
 		'target_name': 'fontconfig',
@@ -345,7 +345,7 @@
 			'<(DEPTH)/deps/skia/third_party/fontconfig/config/fc-glyphname/'
 		],
 		'cxx':'<(emscripten_cc)',
-		'cflags+':['-Werror -include ../deps/fontconfig/config/config.h'],
+		'cflags+':['-include ../deps/fontconfig/config/config.h'],
 	},
 	{
 		'target_name': 'curl',
@@ -358,14 +358,14 @@
 			'<(DEPTH)/deps/curl/lib',
 		],
 		'cxx':'<(emscripten_cc)',
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 	{
 		'target_name':'zlib',
 		'sources':['<@(zlib_files)'],
 		'include_dirs':['<(DEPTH)/deps/zlib',],
 		'cxx':'<(emscripten_cc)',
-		'cflags+':['-Werror'],
+		'cflags+':[''],
 	},
 
 	#'sources/': [['exclude', '(fcobjs.c$)'],],
