@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+set -eo pipefail
 
 if [ "`which git`" == "" ]; then
 	echo "git command line tool is not found.  Either re-install and make sure its added to your path environment variable.";

@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
+set -eo pipefail
+
 if [ -d "$JAVA_HEAP_SIZE" ]; then
 export JAVA_HEAP_SIZE="2048m"
 fi

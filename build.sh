@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
+set -eo pipefail
+
 if [ "$1" == "debug" ]; then
 	echo "building webkit.js (debug)"
 	ninja -C Debug
