@@ -75,7 +75,7 @@ function WebKit(settings) {
 	function initializeInPage() {
 		 $resize = wrap('resize', 'number', ['number', 'number']);
 		 $scaleFactor  = wrap('scalefactor', 'number', ['number']);
-		 $setTransparent = wrap('setTransparent', 'number', ['boolean']);
+		 $setTransparent = wrap('setTransparent', 'number', ['number']);
 		 $setHtml = wrap('setHtml', 'number', ['string']);
 	}
 	function executeInPage() {
