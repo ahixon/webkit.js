@@ -105,6 +105,15 @@
         window.webkit.hidpi = document.getElementById('hidpi').checked ? 1 : 0;
       });
       window.addEventListener('load', function() {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('webgl');
+        var oldDrawArrays = ctx.drawArrays;
+        ctx.drawArrays = function() {
+          var result = oldDrawArrays.apply(this, arguments);
+          window._image = document.getElementById('canvas').toDataURL();
+          console.log("Saved", window._image.length);
+          return result;
+        };
         window.webkit = new WebKit({
           width:document.getElementById('width').value,
           height:document.getElementById('height').value,
