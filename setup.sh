@@ -16,7 +16,9 @@ if [ "`which ninja`" == "" ]; then
 	
 	cd install-tools
 
-	git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	if [ ! -d depot_tools ]; then
+		git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	fi
 
 	export PATH=`pwd`/depot_tools:"$PATH"
 	if [ "`grep depot_tools ~/.profile`" == "" ]; then
