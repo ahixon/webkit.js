@@ -263,4 +263,8 @@ Cflags: -I${includedir}
 EOF
 fi
 
+echo "Syncing project to pull dependencies"
+
+gclient sync
+
 echo "Install complete"
