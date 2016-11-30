@@ -11,7 +11,7 @@
 #include "GraphicsLayer.h"
 #include "GraphicsLayerFactory.h"
 
-#include <WTF/CurrentTime.h>
+#include <wtf/CurrentTime.h>
 #include <platform/cairo/WidgetBackingStore.h>
 #include <platform/cairo/WidgetBackingStoreCairo.h>
 

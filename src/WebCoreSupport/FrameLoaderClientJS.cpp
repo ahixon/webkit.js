@@ -11,7 +11,7 @@
 #include "FrameNetworkingContextJS.h"
 #include "RenderWidget.h"
 #include "FrameView.h"
-#include "MIMETYpeRegistry.h"
+#include "MIMETypeRegistry.h"
 #include "Page.h"
 #include "MainFrame.h"
 #include "WebView.h"
