@@ -1,5 +1,5 @@
 entries = {
-  '.': 'https://github.com/trevorlinton/webkit.js.git',
+  '.': 'https://github.com/ahixon/webkit.js.git',
   'deps/curl': 'https://github.com/trevorlinton/curl.git',
   'deps/ffmpeg': 'https://github.com/trevorlinton/FFmpeg.git',
   'deps/icu': 'https://github.com/trevorlinton/icu4c.git',
