@@ -804,6 +804,7 @@ class NinjaWriter:
     """Write build rules to compile all of |sources|."""
 
     extra_defines = []
+    cflags_c = []
     if self.flavor == 'mac':
       cflags = self.xcode_settings.GetCflags(config_name, arch=arch)
       cflags_c = self.xcode_settings.GetCflagsC(config_name)
@@ -1181,7 +1182,8 @@ class NinjaWriter:
       self.target.binary = self.ComputeOutput(spec)
       if (self.flavor not in ('mac', 'openbsd', 'win') and not
           self.is_standalone_static_library):
-        self.ninja.build(self.target.binary, 'alink_thin', link_deps,
+        # emcc doesn't support thin ar archives
+        self.ninja.build(self.target.binary, 'alink', link_deps,
                          order_only=compile_deps)
       else:
         variables = []
@@ -1896,18 +1898,17 @@ def GenerateOutputForConfig(target_list, target_dicts, data, params,
   if flavor != 'mac' and flavor != 'win':
     master_ninja.rule(
       'alink',
-      description='AR $out',
-      command='rm -f $out && $ar rcs $out $in')
-    master_ninja.rule(
-      'alink_thin',
-      description='AR $out',
-      command='rm -f $out && $ar rcsT $out $in')
+      description='LINK $out, POSTBUILDS',
+      restat=True,
+      command='$ld -static $ldflags $in -o $out',
+      pool='link_pool')
 
     # This allows targets that only need to depend on $lib's API to declare an
     # order-only dependency on $lib.TOC and avoid relinking such downstream
     # dependencies when $lib changes only in non-public ways.
     # The resulting string leaves an uninterpolated %{suffix} which
     # is used in the final substitution below.
+    solink_base = '$ld -shared $ldflags -o $lib -Wl,-soname=$soname %(suffix)s'
     mtime_preserving_solink_base = (
         'if [ ! -e $lib -o ! -e ${lib}.TOC ]; then '
         '%(solink)s && %(extract_toc)s > ${lib}.TOC; else '
@@ -1915,32 +1916,51 @@ def GenerateOutputForConfig(target_list, target_dicts, data, params,
         'if ! cmp -s ${lib}.tmp ${lib}.TOC; then mv ${lib}.tmp ${lib}.TOC ; '
         'fi; fi'
         % { 'solink':
-              '$ld -shared $ldflags -o $lib -Wl,-soname=$soname %(suffix)s',
+              solink_base,
             'extract_toc':
               ('{ readelf -d ${lib} | grep SONAME ; '
                'nm -gD -f p ${lib} | cut -f1-2 -d\' \'; }')})
-
+    
+    solink_suffix = '$in $solibs $libs$postbuilds'
     master_ninja.rule(
       'solink',
-      description='SOLINK $lib',
+      description='SOLINK $lib, POSTBUILDS',
       restat=True,
-      command=(mtime_preserving_solink_base % {
-          'suffix': '-Wl,--whole-archive $in $solibs -Wl,--no-whole-archive '
-          '$libs'}),
+      command=mtime_preserving_solink_base % {'suffix': solink_suffix, 'type': '-shared'},
       pool='link_pool')
+    master_ninja.rule(
+      'solink_notoc',
+      description='SOLINK $lib, POSTBUILDS',
+      restat=True,
+      command=solink_base % {'suffix':solink_suffix, 'type': '-shared'},
+      pool='link_pool')
+    master_ninja.rule(
+      'solink_js',
+      description='SOLINK_JS $lib, POSTBUILDS',
+      restat=True,
+      command='$ld $ldflags $jsflags $in $solibs', # -o $soname // we don't use this, specify in ldflags
+      pool='link_pool')
+      #  ; $ld $ldflags $jsflags $in $solibs -o test.html
+    solink_module_suffix = '$in $solibs $libs$postbuilds'
     master_ninja.rule(
       'solink_module',
-      description='SOLINK(module) $lib',
+      description='SOLINK(module) $lib, POSTBUILDS',
       restat=True,
-      command=(mtime_preserving_solink_base % {
-          'suffix': '-Wl,--start-group $in $solibs -Wl,--end-group '
-          '$libs'}),
+      command=mtime_preserving_solink_base % {'suffix': solink_module_suffix,
+                                              'type': '-bundle'},
       pool='link_pool')
     master_ninja.rule(
+      'solink_module_notoc',
+      description='SOLINK(module) $lib, POSTBUILDS',
+      restat=True,
+      command=solink_base % {'suffix': solink_module_suffix, 'type': '-bundle'},
+      pool='link_pool')
+
+    master_ninja.rule(
       'link',
-      description='LINK $out',
+      description='LINK $out, POSTBUILDS',
       command=('$ld $ldflags -o $out '
-               '-Wl,--start-group $in $solibs -Wl,--end-group $libs'),
+               '$in $solibs $libs$postbuilds'),
       pool='link_pool')
   elif flavor == 'win':
     master_ninja.rule(
@@ -1954,6 +1974,7 @@ def GenerateOutputForConfig(target_list, target_dicts, data, params,
     _AddWinLinkRules(master_ninja, embed_manifest=True)
     _AddWinLinkRules(master_ninja, embed_manifest=False)
   else:
+    # this is for mac, which builds with old m8
     master_ninja.rule(
       'objc',
       description='OBJC $out',
