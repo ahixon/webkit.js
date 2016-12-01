@@ -61,6 +61,9 @@ if [ "`which gcc`" == "" ]; then
 
 		# Install Java
 		sudo apt-get install default-jre
+
+		# for libcurl
+		sudo apt-get build-dep curl
 	fi
 
 	if [ "`which gcc`" == "" ]; then
@@ -264,7 +267,31 @@ EOF
 fi
 
 echo "Syncing project to pull dependencies"
-
 gclient sync
 
-echo "Install complete"
+echo "Configuring and building mbedtls for curl configure"
+cd deps/mbedtls
+
+# hack since curl configure script looks at 'lib' rather than 'library' directory
+# TODO: fix upstream properly
+if [ ! -d lib ]; then
+	ln -s library lib
+fi
+
+# build it so curl can see the library at configure time
+make
+
+cd ../../
+echo "Configuring curl"
+cd deps/curl
+
+./buildconf
+emconfigure ./configure --with-mbedtls=../mbedtls
+
+# TODO: don't know who's lying here; probably emscripten
+# but fix generated config.h's long size
+# TODO: find out why, fix upstream
+sed -i 's/#define CURL_SIZEOF_LONG 8/#define CURL_SIZEOF_LONG 4/' include/curl/curlbuild.h
+
+cd ../../
+echo "Setup complete, ready for configure and build!"
