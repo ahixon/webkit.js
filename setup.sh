@@ -108,8 +108,8 @@ if [ "$EMSCRIPTEN" == "" ]; then
 	tar -xzf emsdk-portable.tar.gz
 	cd emsdk_portable
 	./emsdk update
-	./emsdk install latest
-	./emsdk activate latest
+	./emsdk install sdk-incoming-64bit
+	./emsdk activate sdk-incoming-64bit
 	source ./emsdk_env.sh
 	cd ..
 
