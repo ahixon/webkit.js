@@ -22,7 +22,8 @@ deps = {
     'deps/libjpeg_turbo':'https://github.com/trevorlinton/libjpeg-turbo.git',
     'deps/skia':'https://github.com/trevorlinton/skia.git',
     'deps/libxml2':'https://github.com/trevorlinton/libxml2.git',
-    'deps/curl':'https://github.com/trevorlinton/curl.git',
+    'deps/curl':'https://github.com/ahixon/curl.git',
+    'deps/mbedtls':'https://github.com/ahixon/mbedtls.git',
     'tools/deps2git':Var('google_url') + '/tools/deps2git.git',
 }
 

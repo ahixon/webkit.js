@@ -1,6 +1,7 @@
 entries = {
   '.': 'https://github.com/ahixon/webkit.js.git',
-  'deps/curl': 'https://github.com/trevorlinton/curl.git',
+  'deps/curl': 'https://github.com/ahixon/curl.git',
+  'deps/mbedtls': 'https://github.com/ahixon/mbedtls.git',
   'deps/ffmpeg': 'https://github.com/trevorlinton/FFmpeg.git',
   'deps/icu': 'https://github.com/trevorlinton/icu4c.git',
   'deps/libjpeg_turbo': 'https://github.com/trevorlinton/libjpeg-turbo.git',
