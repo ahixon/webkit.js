@@ -1,11 +1,11 @@
 entries = {
   '.': 'https://github.com/ahixon/webkit.js.git',
   'deps/curl': 'https://github.com/ahixon/curl.git',
-  'deps/mbedtls': 'https://github.com/ahixon/mbedtls.git',
   'deps/ffmpeg': 'https://github.com/trevorlinton/FFmpeg.git',
   'deps/icu': 'https://github.com/trevorlinton/icu4c.git',
   'deps/libjpeg_turbo': 'https://github.com/trevorlinton/libjpeg-turbo.git',
   'deps/libxml2': 'https://github.com/trevorlinton/libxml2.git',
+  'deps/mbedtls': 'https://github.com/ahixon/mbedtls.git',
   'deps/skia': 'https://github.com/trevorlinton/skia.git',
   'tools/deps2git': 'https://chromium.googlesource.com/chromium/tools/deps2git.git',
 }
