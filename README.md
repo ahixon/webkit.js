@@ -60,7 +60,7 @@ webkit.js can be built on linux, osx, or windows.
 
 * Clone the repo to your local drive.
 ```
-git clone https://github.com/trevorlinton/webkit.js webkitjs ; cd webkitjs
+git clone https://github.com/ahixon/webkit.js webkitjs ; cd webkitjs
 ```
 * Run the setup script to grab all of the dependencies and tools.
 ```
